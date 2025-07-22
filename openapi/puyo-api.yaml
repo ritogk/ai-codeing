@@ -1,0 +1,52 @@
+openapi: 3.0.0
+paths:
+  /:
+    get:
+      operationId: AppController_getHello
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - App
+  /score:
+    post:
+      operationId: ScoreController_createScore
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateScoreDto'
+      responses:
+        '201':
+          description: ''
+      tags:
+        - Score
+  /score/ranking:
+    get:
+      operationId: ScoreRankingController_getRanking
+      parameters:
+        - name: timeLimitSec
+          required: true
+          in: query
+          schema:
+            type: number
+      responses:
+        '200':
+          description: ''
+      tags:
+        - ScoreRanking
+info:
+  title: PuyoPuyo Score Attack API
+  description: ぷよぷよ一人用スコアアタックAPI
+  version: '1.0'
+  contact: {}
+tags: []
+servers: []
+components:
+  schemas:
+    CreateScoreDto:
+      type: object
+      properties: {}
